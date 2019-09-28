@@ -1,0 +1,29 @@
+<div>
+
+    <table>
+        <tr *ngIf="loggedOut">
+            Username: <input [(ngModel)]="emailId"><br/>
+            Password: <input type="password" [(ngModel)]="password"><br/>
+            <a (click)="loginUser()" routerLink="/home">Login</a>
+        </tr>
+        <tr  *ngIf="loggedIn">
+            <td>
+                <app-navbar></app-navbar>
+            </td>
+        </tr>
+    </table>
+    
+</div>
+
+
+<!--
+    
+
+    
+    
+    <div class="container">
+    <app-employees></app-employees>
+</div>-->
+
+
+<router-outlet></router-outlet>

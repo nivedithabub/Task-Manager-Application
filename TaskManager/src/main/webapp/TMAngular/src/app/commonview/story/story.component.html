@@ -1,0 +1,31 @@
+<ngb-accordion #a="ngbAccordion" activeIds="custom-panel-1">
+  <ngb-panel id="custom-panel-1">
+    <ng-template ngbPanelHeader let-closed="closed">
+      <div class="d-flex align-items-center justify-content-between">
+        <h5 class="m-0">Story</h5>
+        <!-----button ngbPanelToggle class="btn btn-link p-0">&#9660;</button>--->
+        <button ngbPanelToggle class="btn btn-link p-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="arrow-down" onclick="this.classList.toggle('active')"></div>
+        </button>
+      </div>
+    </ng-template>
+    <ng-template ngbPanelContent>
+        <select [(ngModel)]="selectedEpicId" #t (change)="getStory(t.value)">
+            <option *ngFor="let epic of epics" [(ngValue)]="epic.epicId" >{{epic.epicName}}</option>
+        </select><br/>
+        <table class="table table-striped" border="2">
+            <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let story of stories">
+              <td>{{story.story.storyId}}</td>
+              <td>{{story.story.storyStatus}}</td>
+            </tr>
+            </tbody>
+          </table>
+    </ng-template>
+    
